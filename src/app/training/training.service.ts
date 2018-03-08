@@ -1,8 +1,9 @@
-import {Exercise} from './exercise.model';
-import {Subject} from 'rxjs/Subject';
-import {Injectable} from '@angular/core';
-import {AngularFirestore} from 'angularfire2/firestore';
-import {Subscription} from "rxjs/Subscription";
+import { Exercise } from './exercise.model';
+import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Subscription } from 'rxjs/Subscription';
+import { UiService } from '../shared/ui.service';
 
 
 
@@ -24,9 +25,10 @@ export class  TrainingService {
 
   private availableExercise: Exercise[] = [];
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private uiService: UiService) {}
 
   fetchAvailableExercises() {
+    this.uiService.loadingStateChanged.next(true);
     this.fbSubscription.push(this.db
       .collection('availableExercises')
       .snapshotChanges()
@@ -42,6 +44,11 @@ export class  TrainingService {
       }).subscribe((exercises: Exercise[]) => {
       this.availableExercise = exercises;
       this.exercisesChanged.next([ ...this.availableExercise]);
+        this.uiService.loadingStateChanged.next(false);
+    }, error => {
+        this.uiService.loadingStateChanged.next(false);
+        this.uiService.showSnackbar('Load failed, try again', null, 3000);
+        this.exercisesChanged.next(null);
     }));
   }
 
