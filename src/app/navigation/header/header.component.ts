@@ -16,13 +16,19 @@ export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
   isAuth$: Observable<boolean>;
   authSubscription: Subscription;
+  userSubscription: Subscription;
+  user: string;
   constructor(private store: Store<fromRoot.State>, private authService: AuthService) { }
 
   ngOnInit() {
     // this.authSubscription = this.authService.authChange.subscribe( authStatus => {
     //  this.isAuth = authStatus;
     // });
-    this. isAuth$ = this.store.select(fromRoot.getIsAuth);
+
+    this.userSubscription = this.authService.userSet.subscribe( user => {
+      this.user = user.displayName;
+    });
+    this.isAuth$ = this.store.select(fromRoot.getIsAuth);
   }
   onToggleSidenav() {
    this.sidenavToggle.emit();

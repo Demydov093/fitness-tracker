@@ -38,7 +38,7 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  doFilter(value: string){
+  doFilter(value: string) {
     this.dataSource.filter = value.trim().toLowerCase();
   }
 

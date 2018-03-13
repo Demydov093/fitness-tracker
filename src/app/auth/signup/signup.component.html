@@ -1,6 +1,17 @@
 <section class="signup-form">
   <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field>
+      <input type="name"
+             matInput
+             placeholder="Your name"
+             ngModel
+             name="name"
+             minlength="2"
+             required
+      >
+      <mat-error>Min 2 chars</mat-error>
+    </mat-form-field >
+    <mat-form-field>
       <input type="email"
              matInput
              placeholder="Your email"
