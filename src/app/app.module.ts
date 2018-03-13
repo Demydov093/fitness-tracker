@@ -22,8 +22,9 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
-
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,9 @@ import { TrainingModule } from './training/training.module';
     AppRoutingModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    TrainingModule,
-    AuthModule
+    AuthModule,
+    AngularFirestoreModule,
+    StoreModule.forRoot(reducers)
 
   ],
   providers: [AuthService, TrainingService, UiService],

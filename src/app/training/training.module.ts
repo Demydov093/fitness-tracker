@@ -4,9 +4,11 @@ import {NewTrainingComponent} from "./new-training/new-training.component";
 import {CurrentTrainingComponent} from "./current-training/current-training.component";
 import {PastTrainingsComponent} from "./past-trainings/past-trainings.component";
 import {StopTrainingComponent} from "./current-training/stop-training.component";
-import {AngularFirestoreModule} from "angularfire2/firestore";
 import {SharedModule} from '../shared/shared.module';
+import {TrainingRoutingModule} from "./training-routing.module";
 
+import { StoreModule } from '@ngrx/store';
+import { trainingReducer } from './training.reducer';
 
 
 
@@ -16,11 +18,12 @@ import {SharedModule} from '../shared/shared.module';
     NewTrainingComponent,
     CurrentTrainingComponent,
     PastTrainingsComponent,
-    StopTrainingComponent
+    StopTrainingComponent,
   ],
   imports: [
     SharedModule,
-    AngularFirestoreModule
+    TrainingRoutingModule,
+    StoreModule.forFeature('training', trainingReducer)
   ],
   entryComponents: [StopTrainingComponent]
 
