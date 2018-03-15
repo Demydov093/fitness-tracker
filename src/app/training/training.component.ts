@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { TrainingService } from './training.service';
-import { Store } from '@ngrx/store';
+import {Component, OnInit} from '@angular/core';
+import {TrainingService} from './training.service';
+import {Store} from '@ngrx/store';
 import * as fromTraining from './training.reducer';
-import { map } from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from "../auth/auth.service";
 
@@ -14,7 +14,9 @@ import {AuthService} from "../auth/auth.service";
 export class TrainingComponent implements OnInit {
 
   ongoingTraining$: Observable<boolean>;
-  constructor(private trainingService: TrainingService, private store: Store<fromTraining.State>) { }
+
+  constructor(private trainingService: TrainingService, private store: Store<fromTraining.State>) {
+  }
 
   ngOnInit() {
     this.ongoingTraining$ = this.store.select(fromTraining.getIsTraining);
@@ -29,6 +31,7 @@ export class TrainingComponent implements OnInit {
     //   }
     // );
   }
+
   // ngOnDestroy() {
   //   if (this.exerciseSubsrption) {
   //     this.exerciseSubsrption.unsubscribe();

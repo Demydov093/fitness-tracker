@@ -12,4 +12,4 @@ export class StopLoading implements Action {
 }
 
 
-export type UiActions = StartLoading| StopLoading;
+export type UiActions = StartLoading | StopLoading;

@@ -1,22 +1,21 @@
-import { Exercise } from './exercise.model';
-import { Subject } from 'rxjs/Subject';
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Subscription } from 'rxjs/Subscription';
-import { UiService } from '../shared/ui.service';
-import { Store } from '@ngrx/store';
+import {Exercise} from './exercise.model';
+import {Subject} from 'rxjs/Subject';
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Subscription} from 'rxjs/Subscription';
+import {UiService} from '../shared/ui.service';
+import {Store} from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import * as fromTraining from './training.reducer';
 import * as Training from './training.action';
 import * as UI from '../shared/ui.actions';
 import * as Auth from '../auth/auth.actions';
-import { take } from 'rxjs/operators';
+import {take} from 'rxjs/operators';
 import {getFinishedExercises} from "./training.reducer";
 
 
-
 @Injectable()
-export class  TrainingService {
+export class TrainingService {
   // private availableExercise: Exercise[] = [
   //   {id: 'crunches', name: 'Crunches', duration: 30, calories: 8},
   //   {id: 'touch-toes', name: 'Touch Toes', duration: 100, calories: 15},
@@ -34,11 +33,10 @@ export class  TrainingService {
   // private availableExercise: Exercise[] = [];
   userId: string;
 
-  constructor(
-    private db: AngularFirestore,
-    private uiService: UiService,
-    private store: Store<fromTraining.State>
-  ) {}
+  constructor(private db: AngularFirestore,
+              private uiService: UiService,
+              private store: Store<fromTraining.State>) {
+  }
 
   fetchAvailableExercises() {
     // this.uiService.loadingStateChanged.next(true);
@@ -61,12 +59,12 @@ export class  TrainingService {
         // this.uiService.loadingStateChanged.next(false);
         this.store.dispatch(new Training.SetAvailableTrainings(exercises));
         this.store.dispatch(new UI.StopLoading());
-    }, error => {
+      }, error => {
         this.store.dispatch(new UI.StopLoading());
         // this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar('Load failed, try again', null, 3000);
         // this.exercisesChanged.next(null);
-    }));
+      }));
   }
 
   startExercise(selectedId: string) {
@@ -76,9 +74,10 @@ export class  TrainingService {
     // this.exerciseChanged.next({ ...this.runningExercise });
     this.store.dispatch(new Training.StartTraining(selectedId));
   }
+
   completeExercise() {
     this.store.select(fromTraining.getActiveTraining).pipe(take(1)).subscribe((ex) => {
-      this.addDataToDatabase({ ...ex, date: new Date, state: 'completed'});
+      this.addDataToDatabase({...ex, date: new Date, state: 'completed'});
       // this.runningExercise = null;
       // this.exerciseChanged.next(null);
       this.store.dispatch(new Training.StopTraining());
@@ -99,6 +98,7 @@ export class  TrainingService {
       this.store.dispatch(new Training.StopTraining());
     });
   }
+
   // getRuuningExercise() {
   //   return { ...this.runningExercise };
   // }
@@ -107,18 +107,21 @@ export class  TrainingService {
       .collection('finishedExercises' + this.userId)
       .valueChanges()
       .subscribe((exercises: Exercise[]) => {
-         // this.finishedExercisesChanged.next(exercises);
+        // this.finishedExercisesChanged.next(exercises);
         this.store.dispatch(new Training.SetFinishedTrainings(exercises));
       }));
   }
+
   getUserId(id) {
     this.userId = id;
   }
+
   cancelSubscriptions() {
-    this.fbSubscription.forEach( sub => {
+    this.fbSubscription.forEach(sub => {
       sub.unsubscribe();
     });
   }
+
   private addDataToDatabase(exercise: Exercise) {
     this.db.collection('finishedExercises' + this.userId).add(exercise);
   }

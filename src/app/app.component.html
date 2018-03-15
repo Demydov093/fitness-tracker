@@ -1,6 +1,5 @@
-
 <!--<button mat-icon-button color="accent">-->
-  <!--<mat-icon>home</mat-icon>-->
+<!--<mat-icon>home</mat-icon>-->
 <!--</button>-->
 <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation">
@@ -8,10 +7,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <!--<button (click)="sidenav.toggle()">Show Sidenav</button>-->
-      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-      <main>
-        <router-outlet></router-outlet>
-      </main>
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

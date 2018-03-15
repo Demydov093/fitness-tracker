@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import { TrainingService } from '../training.service';
-import { Exercise } from '../exercise.model';
-import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { UiService } from '../../shared/ui.service';
+import {TrainingService} from '../training.service';
+import {Exercise} from '../exercise.model';
+import {NgForm} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {UiService} from '../../shared/ui.service';
 import {Observable} from 'rxjs/Observable';
 
 import * as fromTraining from '../training.reducer';
 import * as fromRoot from '../../app.reducer';
-import { Store } from '@ngrx/store';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-new-training',
@@ -17,11 +17,13 @@ import { Store } from '@ngrx/store';
 })
 export class NewTrainingComponent implements OnInit {
 
-  constructor(private trainingService: TrainingService, private uiService: UiService, private store: Store<fromTraining.State>) { }
+  constructor(private trainingService: TrainingService, private uiService: UiService, private store: Store<fromTraining.State>) {
+  }
 
   exercises$: Observable<Exercise[]>;
   // exerciseSubscription: Subscription;
   isLoading$: Observable<boolean>;
+
   // private loadingSubscription: Subscription;
 
   ngOnInit() {
@@ -29,15 +31,16 @@ export class NewTrainingComponent implements OnInit {
     //   this.isLoading = isLoading;
     // })
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
-   // this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(exercises => (this.exercises = exercises));
+    // this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(exercises => (this.exercises = exercises));
     this.exercises$ = this.store.select(fromTraining.getAvailableExercises);
     this.fetchExercises();
   }
+
   onStartTraining(form: NgForm) {
     this.trainingService.startExercise(form.value.exercise);
   }
 
-  fetchExercises () {
+  fetchExercises() {
     this.trainingService.fetchAvailableExercises();
   }
 
