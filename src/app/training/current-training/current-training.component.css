@@ -1,5 +1,9 @@
 .current-training {
 
   padding-top: 20px;
-
+  height: calc(100vh - 64px);
+  background-image: url("../../../assets/images/back3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
 }

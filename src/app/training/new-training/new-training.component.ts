@@ -5,7 +5,6 @@ import {NgForm} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {UiService} from '../../shared/ui.service';
 import {Observable} from 'rxjs/Observable';
-
 import * as fromTraining from '../training.reducer';
 import * as fromRoot from '../../app.reducer';
 import {Store} from '@ngrx/store';

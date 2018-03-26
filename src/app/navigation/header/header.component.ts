@@ -28,7 +28,9 @@ export class HeaderComponent implements OnInit {
     // });
 
     this.userSubscription = this.authService.userSet.subscribe(user => {
-      this.user = user.displayName;
+      if (user.displayName !== null) {
+        this.user = user.displayName;
+      }
     });
     this.isAuth$ = this.store.select(fromRoot.getIsAuth);
   }

@@ -68,6 +68,9 @@ export class AuthService {
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
         this.userName = user.displayName;
+        setTimeout( () => {
+          this.userSet.next(user);
+        }, 500);
       }
     });
   }

@@ -6,6 +6,7 @@ import * as fromTraining from '../training.reducer';
 import * as fromRoot from '../../app.reducer';
 import {Store} from '@ngrx/store';
 import {take} from 'rxjs/operators';
+import {DoneTrainingComponent} from './done-training.component';
 
 
 @Component({
@@ -31,10 +32,18 @@ export class CurrentTrainingComponent implements OnInit {
     this.store.select(fromTraining.getActiveTraining).pipe(take(1)).subscribe(ex => {
       const step = ex.duration / 100 * 1000;
       this.timer = setInterval(() => {
-        this.progress = this.progress + 1;
-        if (this.progress >= 100) {
-          this.trainingService.completeExercise();
+        if (this.progress < 100) {
+          this.progress = this.progress + 1;
+        }
+        if (this.progress === 100) {
           clearInterval(this.timer);
+          const dialogRef  = this.dialog.open(DoneTrainingComponent);
+          dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+              this.trainingService.completeExercise();
+
+            }
+          });
         }
       }, step);
     });

@@ -1,11 +1,11 @@
 a {
   text-decoration: none;
-  color: aliceblue;
+  color: #ffffff;
 }
 
 a:hover,
 a:active {
-  color: darkgray;
+  opacity: 0.6;
 }
 
 
@@ -18,4 +18,7 @@ a:active {
 .nav-caption {
   display: inline-block;
   padding-left: 6px;
+}
+.user {
+  color: antiquewhite;
 }

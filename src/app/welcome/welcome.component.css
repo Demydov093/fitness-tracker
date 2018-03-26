@@ -2,12 +2,16 @@
   text-align: center;
   height: calc(100vh - 64px);
   padding-top: 60px;
+  background-image: url("../../assets/images/back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 section {
-  height: 100px;
+  height: 120px;
   background: #fafafa;
-  padding: 20px;
+  opacity: 0.85;
+  padding: 50px 20px;
   color: darkolivegreen;
   box-shadow: black 0 0 79px 0;
 }

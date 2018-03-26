@@ -11,7 +11,7 @@ import * as Training from './training.action';
 import * as UI from '../shared/ui.actions';
 import * as Auth from '../auth/auth.actions';
 import {take} from 'rxjs/operators';
-import {getFinishedExercises} from "./training.reducer";
+import {getFinishedExercises} from './training.reducer';
 
 
 @Injectable()

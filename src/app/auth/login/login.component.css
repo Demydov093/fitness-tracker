@@ -1,3 +1,16 @@
 mat-form-field {
   width: 300px;
 }
+.login-form {
+  padding-top: 20px;
+  height: calc(100vh - 84px);
+  background-image: url("../../../assets/images/start.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+}
+form {
+  background: white;
+  height: 250px;
+  opacity: 0.7;
+}
