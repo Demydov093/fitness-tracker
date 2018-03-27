@@ -24,6 +24,8 @@ import {AuthModule} from './auth/auth.module';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './app.reducer';
+import {ExerciseModule} from './exercises/exercise.module';
+import {ExerciseService} from "./exercises/exercise.service";
 
 @NgModule({
   declarations: [
@@ -40,11 +42,12 @@ import {reducers} from './app.reducer';
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
+    ExerciseModule,
     AngularFirestoreModule,
     StoreModule.forRoot(reducers)
 
   ],
-  providers: [AuthService, TrainingService, UiService],
+  providers: [AuthService, TrainingService, UiService, ExerciseService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,41 @@
+<section class="exercise-form">
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+  <form  #f="ngForm" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <input type="text"
+             matInput
+             placeholder="Name of Exercise"
+             ngModel
+             name="name"
+             required
+             style="color: green"
+      >
+      <mat-error>Minimum 3 chars</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number"
+             matInput
+             placeholder="Duration of exercise"
+             ngModel
+             name="duration"
+             required
+             style="color: green"
+      >
+      <mat-error>Minimum 1 number</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number"
+             matInput
+             placeholder="Enter the number of calories"
+             ngModel
+             name="calories"
+             required
+             style="color: green"
+      >
+      <mat-error>Minimum 1 number</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Add</button>
+
+  </form>
+  </mat-card>
+</section>

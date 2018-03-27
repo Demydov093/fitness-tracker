@@ -1,7 +1,7 @@
 .past {
   padding: 30px;
   height: calc(100vh - 173px);
-  background-image: url("../../../assets/images/back4.jpg");
+  background-image: url("../../../assets/images/bg-past.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

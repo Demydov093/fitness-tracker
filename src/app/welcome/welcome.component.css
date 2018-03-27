@@ -1,13 +1,15 @@
 .welcome {
   text-align: center;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 124px);
   padding-top: 60px;
-  background-image: url("../../assets/images/back.jpg");
+  background-image: url("../../assets/images/bg-intro.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 section {
+  margin-bottom: 30px;
+  width: 394px;
   height: 120px;
   background: #fafafa;
   opacity: 0.85;

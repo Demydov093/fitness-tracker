@@ -1,7 +1,7 @@
 .new-training {
   padding: 30px;
   height: calc(100vh - 113px);
-  background-image: url("../../../assets/images/back2.jpg");
+  background-image: url("../../../assets/images/bg-init.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
