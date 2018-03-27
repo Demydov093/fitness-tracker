@@ -7,13 +7,19 @@
   background-size: cover;
 }
 
+
 section {
-  margin-bottom: 30px;
-  width: 394px;
+  width: initial;
   height: 120px;
   background: #fafafa;
   opacity: 0.85;
   padding: 50px 20px;
   color: darkolivegreen;
   box-shadow: black 0 0 79px 0;
+}
+@media(min-width: 400px) {
+  section {
+    margin-bottom: 30px;
+    width: 394px;
+  }
 }
