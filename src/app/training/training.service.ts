@@ -10,7 +10,7 @@ import * as fromTraining from './training.reducer';
 import * as Training from './training.action';
 import * as UI from '../shared/ui.actions';
 import * as Auth from '../auth/auth.actions';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs/operators/take';
 import {getFinishedExercises} from './training.reducer';
 
 

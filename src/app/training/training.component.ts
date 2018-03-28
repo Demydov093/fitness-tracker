@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TrainingService} from './training.service';
 import {Store} from '@ngrx/store';
 import * as fromTraining from './training.reducer';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs/operators/map';
 import {Observable} from 'rxjs/Observable';
-import {AuthService} from "../auth/auth.service";
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-training',

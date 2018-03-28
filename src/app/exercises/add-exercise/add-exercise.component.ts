@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {AddExercise} from '../exercise.actions';
 import {Exercise} from '../../training/exercise.model';
-import {ExerciseService} from '../exercise.service';
+
 
 @Component({
   selector: 'app-add-exercise',
@@ -12,7 +12,8 @@ import {ExerciseService} from '../exercise.service';
 })
 export class AddExerciseComponent implements OnInit {
 
-  constructor(private store: Store<any>, private exerciseService: ExerciseService) { }
+  constructor(private store: Store<any>) {
+  }
 
   ngOnInit() {
   }
@@ -28,11 +29,7 @@ export class AddExerciseComponent implements OnInit {
       ''
     );
     form.resetForm();
-    //
-    // // this.addCar.emit(car);
-    // this.store.dispatch(new AddExercise(exercise));
-    if (exercise) {
-      this.exerciseService.addExercise(exercise);
-    }
+
+    this.store.dispatch(new AddExercise(exercise));
   }
 }

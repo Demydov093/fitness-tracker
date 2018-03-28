@@ -25,7 +25,7 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './app.reducer';
 import {ExerciseModule} from './exercises/exercise.module';
-import {ExerciseService} from "./exercises/exercise.service";
+import {ExerciseService} from './exercises/exercise.service';
 
 @NgModule({
   declarations: [

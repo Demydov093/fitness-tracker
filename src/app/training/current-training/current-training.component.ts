@@ -5,7 +5,7 @@ import {TrainingService} from '../training.service';
 import * as fromTraining from '../training.reducer';
 import * as fromRoot from '../../app.reducer';
 import {Store} from '@ngrx/store';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs/operators/take';
 import {DoneTrainingComponent} from './done-training.component';
 
 
