@@ -2,10 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UiService} from '../../shared/ui.service';
-import {Subscription, Observable} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import * as fromRoot from '../../app.reducer';
 import {map} from 'rxjs/operators/map';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
   isLoading$: Observable<boolean>;
   private loadingSubscription: Subscription;
 
-  constructor(private authService: AuthService, private uiService: UiService, private store: Store<fromRoot.State>) {
+  constructor(private authService: AuthService, private uiService: UiService, private store: Store<fromRoot.State>,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -42,6 +45,10 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     });
+  }
+
+  signInWithFacebook() {
+    this.authService.signInWithFacebook();
   }
 
   // ngOnDestroy() {

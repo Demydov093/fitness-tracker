@@ -34,8 +34,8 @@
         >
         <mat-error>Minimum 1 number</mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Add</button>
-
+      <button type="submit" *ngIf="!(isLoading$ | async)" mat-raised-button color="primary" [disabled]="f.invalid">Add</button>
+      <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
     </form>
   </mat-card>
 </section>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TrainingService} from '../training.service';
 import {Exercise} from '../exercise.model';
 import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {UiService} from '../../shared/ui.service';
 import {Observable} from 'rxjs/Observable';
 import * as fromTraining from '../training.reducer';

@@ -1,6 +1,5 @@
 <section class="login-form">
-  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm"
-        (ngSubmit)="onSubmit()">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm">
     <mat-form-field>
       <input type="email"
              matInput
@@ -27,9 +26,15 @@
       >
       <mat-error>Invalid password</mat-error>
     </mat-form-field>
-    <button *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary"
+    <button *ngIf="!(isLoading$ | async)" type="button" (click)="onSubmit()" mat-raised-button color="primary"
             [disabled]="loginForm.invalid">Log In
     </button>
+    <div class="form-group">
+      <span type="button" *ngIf="!(isLoading$ | async)" class="btn btn-block" (click)="signInWithFacebook()">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        Login with Facebook
+      </span>
+    </div>
     <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
   </form>
 </section>

@@ -11,6 +11,19 @@ mat-form-field {
 }
 form {
   background: white;
-  height: 250px;
+  height: 300px;
   opacity: 0.8;
+}
+.btn {
+  background-color: blue;
+  color: #ffffff;
+  border: none;
+  height: 30px;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 11px;
+}
+.btn:hover {
+  opacity: 0.85;
+  cursor: pointer;
 }

@@ -12,6 +12,7 @@ import * as Auth from './auth.actions';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from './user.model';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
@@ -48,7 +49,24 @@ export class AuthService {
       }
     });
   }
-
+  signInWithFacebook() {
+    this.afAuth.auth.signInWithPopup(
+      new firebase.auth.FacebookAuthProvider()
+    ).then(result => {
+      this.store.dispatch(new UI.StopLoading());
+      // this.uiService.loadingStateChanged.next(false);
+    })
+      .catch(error => {
+        this.store.dispatch(new UI.StopLoading());
+        // this.uiService.loadingStateChanged.next(false);
+        this.uiService.showSnackbar(error.message, null, 3000);
+      });
+    this.afAuth.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.userName = user.displayName;
+      }
+    });
+  }
   registerUser(authData: AuthData, form) {
     // this.uiService.loadingStateChanged.next(true);
     this.store.dispatch(new UI.StartLoading());

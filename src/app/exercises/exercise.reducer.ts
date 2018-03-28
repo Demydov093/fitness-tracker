@@ -1,6 +1,6 @@
 import {EXERCISE_ACTION, ExerciseAction} from './exercise.actions';
 import {Exercise} from '../training/exercise.model';
-import {createFeatureSelector, createSelector} from "@ngrx/store";
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface ExerciseState {
   availableExercises: Exercise[];
